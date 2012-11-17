@@ -1,9 +1,12 @@
 
   QNetWalk 1.3
-
+  
+  This repo contains, a BlackBerry 10 port of QNetWalk
+  
   QNetWalk is a game for system administrators.
   Copyright (C) 2004-2008, Andi Peredri <andi@ukr.net>
-
+  BlackBerry Port, Antti Pohjola <summeli@summeli.fi>
+  
   Requirements: - Qt 4.3
 		- Network Audio System (optional for sound)
 
