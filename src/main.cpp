@@ -28,7 +28,7 @@ int main(int argc, char ** argv)
     window.showFullScreen();
 #else
    // window.show();
-    window.show();
+    window.showFullScreen();
 #endif
 
 #ifdef Q_OS_SYMBIAN

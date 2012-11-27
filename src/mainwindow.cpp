@@ -1,7 +1,7 @@
 
 //  qnetwalk/mainwindow.cpp
 //  Copyright (C) 2004-2008, Andi Peredri <andi@ukr.net>
-//  Ported to Symbian by Ahmad Mushtaq <ahmad.mushtaq@gmail.com>
+//  Ported to BlackBerry 10 By Antti Pohjola <summeli@summeli.fi>
 
 #include <QAction>
 #include <QApplication>
@@ -97,7 +97,7 @@ MainWindow::MainWindow() : QMainWindow(0, Qt::Dialog)
 
     setWindowTitle(tr(kApplicationName));
   //  setFixedSize(minimumSizeHint());
-    setGeometry(0,200,720,800);
+    //setGeometry(0,200,720,800);
     setFocusPolicy(Qt::StrongFocus);
 
     menu = new QMenu(this);
@@ -115,8 +115,7 @@ MainWindow::MainWindow() : QMainWindow(0, Qt::Dialog)
     menu->addAction(tr("How to play"), this, SLOT(help()));
     menu->addAction(QPixmap(), tr("About"), this, SLOT(about()));
     menu->addAction(QPixmap(), tr("Quit"), qApp, SLOT(closeAllWindows()));
-
-
+   // menu->setStyleSheet("QMenu { font-size:40px;}");
     QActionGroup * actions = new QActionGroup(this);
     connect(actions, SIGNAL(triggered(QAction *)), SLOT(triggeredSkill(QAction *)));
 
@@ -140,6 +139,7 @@ MainWindow::MainWindow() : QMainWindow(0, Qt::Dialog)
     }
 
     skillMenu = new QMenu(tr("Skill"), this);
+    //skillMenu->setStyleSheet("QMenu { font-size:40px;}");
     skillMenu->addActions(actions->actions());
 
     QVBoxLayout * vboxLayout = new QVBoxLayout;
@@ -171,6 +171,8 @@ MainWindow::MainWindow() : QMainWindow(0, Qt::Dialog)
     frame->setFrameStyle(QFrame::Panel | QFrame::Sunken);
     frame->setFixedSize(gridsize, gridsize);
     frame->setLayout(grid);
+    //set margins to set the game to the center of the screen
+    frame->setContentsMargins(7,10,0,0);
     vboxLayout->addWidget(frame);
 
 
@@ -188,7 +190,7 @@ MainWindow::MainWindow() : QMainWindow(0, Qt::Dialog)
 
 
     QPushButton* menuButton = new QPushButton(tr("Menu"), this);
-    menuButton->setMinimumSize(100, 60);
+    menuButton->setMinimumSize(150, 120);
     connect ( menuButton, SIGNAL(clicked()), this, SLOT(showMenu()));
     buttonsLayout->addWidget(menuButton);
 
@@ -196,8 +198,8 @@ MainWindow::MainWindow() : QMainWindow(0, Qt::Dialog)
 
     newGameButton = new QPushButton("", this);
     newGameButton->setIcon(QIcon(":/pics/refresh.png"));
-    newGameButton->setIconSize(QSize(47,47));
-    newGameButton->setMinimumSize(100, 60);
+    newGameButton->setIconSize(QSize(70,70));
+    newGameButton->setMinimumSize(150, 120);
     connect (newGameButton, SIGNAL(clicked()), this, SLOT(newGame()));
     connect (newGameButton, SIGNAL(clicked()), this, SLOT(touch()));
     buttonsLayout->addWidget(newGameButton);
@@ -205,7 +207,7 @@ MainWindow::MainWindow() : QMainWindow(0, Qt::Dialog)
     buttonsLayout->addStretch();
 
     QPushButton* skillButton = new QPushButton(tr("Skill"), this);
-    skillButton->setMinimumSize(100, 60);
+    skillButton->setMinimumSize(150, 120);
     connect (skillButton, SIGNAL(clicked()), this, SLOT(showMenu()));
     buttonsLayout->addWidget(skillButton);
 
